@@ -40,4 +40,10 @@
         android:name="com.example.healthdiary.ui.send.SendFragment"
         android:label="@string/menu_send"
         tools:layout="@layout/fragment_send" />
+
+    <fragment
+        android:id="@+id/nav_recommendations"
+        android:name="com.example.healthdiary.ui.recommendations.RecommendationsListFragment"
+        android:label="@string/menu_recommendations"
+        tools:layout="@layout/fragment_recommendations" />
 </navigation>
