@@ -9,6 +9,10 @@
             android:icon="@drawable/ic_menu_camera"
             android:title="@string/menu_parameters" />
         <item
+                android:id="@+id/nav_medicaments"
+                android:icon="@android:drawable/ic_dialog_info"
+                android:title="@string/menu_medicaments" />
+        <item
             android:id="@+id/nav_gallery"
             android:icon="@drawable/ic_menu_gallery"
             android:title="@string/menu_gallery" />
@@ -20,6 +24,10 @@
             android:id="@+id/nav_tools"
             android:icon="@drawable/ic_menu_manage"
             android:title="@string/menu_tools" />
+        <item
+            android:id="@+id/nav_recommendations"
+            android:icon="@android:drawable/ic_menu_view"
+            android:title="@string/menu_recommendations" />
     </group>
 
     <item android:title="Communicate">
