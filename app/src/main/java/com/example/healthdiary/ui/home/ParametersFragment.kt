@@ -12,7 +12,7 @@ import com.example.healthdiary.db.DBHelper
 import com.example.healthdiary.db.UserParameters
 import kotlin.math.pow
 
-class HomeFragment : Fragment() {
+class ParametersFragment : Fragment() {
 
     override fun onCreateView(
             inflater: LayoutInflater,
