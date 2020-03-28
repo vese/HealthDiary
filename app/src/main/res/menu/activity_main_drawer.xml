@@ -9,6 +9,10 @@
             android:icon="@drawable/ic_menu_camera"
             android:title="@string/menu_home" />
         <item
+                android:id="@+id/nav_medicaments"
+                android:icon="@android:drawable/ic_dialog_info"
+                android:title="@string/menu_medicaments" />
+        <item
             android:id="@+id/nav_gallery"
             android:icon="@drawable/ic_menu_gallery"
             android:title="@string/menu_gallery" />
