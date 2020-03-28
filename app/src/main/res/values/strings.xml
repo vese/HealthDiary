@@ -16,4 +16,9 @@
     <string name="menu_send">Send</string>
     <string name="recommendation">recommendation</string>
     <string name="title">Title</string>
+    <string name="menu_medicaments">Medicaments</string>
+    <string name="medicament_name">Name</string>
+    <string name="title_dosage">Dosage</string>
+    <string name="manufacturer_title">Manufacturer</string>
+    <string name="title_price">Price</string>
 </resources>
