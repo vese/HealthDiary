@@ -57,13 +57,14 @@ class UserParameters {
         }
 
         fun getUserParametersList(cursor: Cursor?): ArrayList<UserParameters> {
-            cursor!!.moveToFirst()
             var result: ArrayList<UserParameters> = ArrayList()
-            result.add(getUserParameters(cursor))
-            while (cursor.moveToNext()) {
+            if (cursor!!.moveToFirst()) {
                 result.add(getUserParameters(cursor))
+                while (cursor.moveToNext()) {
+                    result.add(getUserParameters(cursor))
+                }
+                cursor.close()
             }
-            cursor.close()
             return result
         }
 

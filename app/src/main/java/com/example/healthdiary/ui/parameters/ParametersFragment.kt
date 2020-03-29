@@ -1,4 +1,4 @@
-package com.example.healthdiary.ui.home
+package com.example.healthdiary.ui.parameters
 
 import android.content.Context
 import android.os.Bundle
@@ -19,19 +19,21 @@ class ParametersFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        val root = inflater.inflate(R.layout.fragment_home, container, false)
+        val root = inflater.inflate(R.layout.fragment_parameters, container, false)
 
         val dbHandler = DBHelper(container!!.context, null)
         val inputWeight: EditText = root.findViewById(R.id.input_weight)
         val inputHeight: EditText = root.findViewById(R.id.input_height)
         val lastUserParameters = dbHandler.getLastUserParameters()
-        inputWeight.setText(lastUserParameters.weight.toString())
-        inputHeight.setText(lastUserParameters.height.toString())
         val hintText: TextView = root.findViewById(R.id.hint_text)
-        hintText.text = getHint(lastUserParameters)
-        val userParametersList = dbHandler.getUserParametersList()
         val resultsTable: TableLayout = root.findViewById(R.id.results_table)
-        fillTable(userParametersList, resultsTable, container!!.context)
+        if (lastUserParameters != null) {
+            inputWeight.setText(lastUserParameters.weight.toString())
+            inputHeight.setText(lastUserParameters.height.toString())
+            hintText.text = getHint(lastUserParameters)
+            val userParametersList = dbHandler.getUserParametersList()
+            fillTable(userParametersList, resultsTable, container!!.context)
+        }
 
         val saveButton: Button = root.findViewById(R.id.button_save)
         saveButton.setOnClickListener {
@@ -45,7 +47,7 @@ class ParametersFragment : Fragment() {
                 Toast.makeText(container!!.context, "New values were saved!", Toast.LENGTH_LONG)
                     .show()
 
-                hintText.setText(getHint(userParameters))
+                hintText.text = getHint(userParameters)
                 val result = dbHandler.getUserParametersList()
                 fillTable(result, resultsTable, container!!.context)
             }
