@@ -13,11 +13,14 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) : SQLit
         onCreate(db)
     }
 
-    fun getLastUserParameters(): UserParameters {
+    fun getLastUserParameters(): UserParameters? {
         val db = this.readableDatabase
         val cursor = db.rawQuery(UserParameters.selectLastQuery, null)
-        cursor!!.moveToFirst()
-        return UserParameters.getUserParameters(cursor)
+        return if (cursor!!.moveToFirst()) {
+            UserParameters.getUserParameters(cursor)
+        } else {
+            null
+        }
     }
 
     fun getUserParametersList(): ArrayList<UserParameters> {
@@ -28,7 +31,7 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) : SQLit
 
     fun insertUserParameter(userParameters: UserParameters) {
         val lastUserParameters = getLastUserParameters()
-        if (lastUserParameters.date == userParameters.date){
+        if (lastUserParameters != null && lastUserParameters.date == userParameters.date){
             if (lastUserParameters.weight != userParameters.weight || lastUserParameters.height != userParameters.height) {
                 val db = this.writableDatabase
                 db.execSQL(UserParameters.getUpdateQuery(userParameters))
