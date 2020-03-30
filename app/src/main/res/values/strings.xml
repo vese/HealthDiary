@@ -21,4 +21,9 @@
     <string name="title_dosage">Dosage</string>
     <string name="manufacturer_title">Manufacturer</string>
     <string name="title_price">Price</string>
+
+    <string-array name="sex_list">
+        <item>Female</item>
+        <item>Male</item>
+    </string-array>
 </resources>
