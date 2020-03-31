@@ -9,7 +9,14 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) : SQLit
         db.execSQL(UserParameters.createQuery)
         db.execSQL(UserParameter.createQuery)
     }
+
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
+        db.execSQL(UserParameters.dropQuery)
+        db.execSQL(UserParameter.dropQuery)
+        onCreate(db)
+    }
+
+    override fun onDowngrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
         db.execSQL(UserParameters.dropQuery)
         db.execSQL(UserParameter.dropQuery)
         onCreate(db)
