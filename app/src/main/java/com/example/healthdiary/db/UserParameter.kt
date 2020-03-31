@@ -39,7 +39,7 @@ class UserParameter {
         val selectQuery get() = "SELECT * FROM $MODEL_NAME ORDER BY $ID_COLUMN_NAME"
 
         fun getParameterQuery(name: String) =
-            "SELECT $VALUE_COLUMN_NAME FROM $MODEL_NAME WHERE $NAME_COLUMN_NAME = '$name'"
+            "SELECT $VALUE_COLUMN_NAME FROM $MODEL_NAME WHERE $NAME_COLUMN_NAME = '$name' ORDER BY $ID_COLUMN_NAME DESC"
 
         fun getUpdateQuery(userParameter: UserParameter) =
             "INSERT OR IGNORE INTO $MODEL_NAME ($NAME_COLUMN_NAME, $VALUE_COLUMN_NAME) VALUES ('${userParameter.name}', '${userParameter.value}');" +

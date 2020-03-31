@@ -8,10 +8,18 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) : SQLit
     override fun onCreate(db: SQLiteDatabase) {
         db.execSQL(UserParameters.createQuery)
         db.execSQL(UserParameter.createQuery)
+        db.execSQL(WaterTrackParameters.createQuery)
     }
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
         db.execSQL(UserParameters.dropQuery)
         db.execSQL(UserParameter.dropQuery)
+        db.execSQL(WaterTrackParameters.dropQuery)
+        onCreate(db)
+    }
+    override fun onDowngrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
+        db.execSQL(UserParameters.dropQuery)
+        db.execSQL(UserParameter.dropQuery)
+        db.execSQL(WaterTrackParameters.dropQuery)
         onCreate(db)
     }
 
@@ -69,8 +77,30 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) : SQLit
         db.execSQL(UserParameter.getUpdateQuery(userParameter))
     }
 
+    //watertrack parameters
+    fun getLastWaterTrackParameters(): WaterTrackParameters? {
+        val db = this.readableDatabase
+        val cursor = db.rawQuery(WaterTrackParameters.selectLastQuery, null)
+        return if (cursor!!.moveToFirst()) {
+            WaterTrackParameters.getWaterTrackParameters(cursor)
+        } else {
+            null
+        }
+    }
+
+    fun getWaterTrackParametersList(): ArrayList<WaterTrackParameters> {
+        val db = this.readableDatabase
+        val cursor = db.rawQuery(WaterTrackParameters.selectQuery, null)
+        return WaterTrackParameters.getWaterTrackParametersList(cursor)
+    }
+
+    fun updateWaterTrackParameters(waterTrackParameters: WaterTrackParameters) {
+        val db = this.readableDatabase
+        db.execSQL(WaterTrackParameters.getUpdateQuery(waterTrackParameters))
+    }
+
     companion object {
-        private const val DATABASE_VERSION = 2
+        private const val DATABASE_VERSION = 3
         private const val DATABASE_NAME = "healthDiary.db"
     }
 }
