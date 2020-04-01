@@ -1,30 +1,14 @@
 package com.example.healthdiary.db
 
-import android.content.ContentValues
 import android.database.Cursor
 import kotlin.collections.ArrayList
 
-class UserParameter {
-    var name: String
-    var value: String
-
-    constructor(name: String, value: String) {
-        this.name = name
-        this.value = value
-    }
-
-    val contentValues: ContentValues
-        get() {
-            val values = ContentValues()
-            values.put(NAME_COLUMN_NAME, name)
-            values.put(VALUE_COLUMN_NAME, value)
-            return values
-        }
+class UserParameter(var name: String, var value: String) {
 
     companion object {
-        const val MODEL_NAME = "UserParameter"
-        const val ID_COLUMN_NAME = "_id"
-        const val NAME_COLUMN_NAME = "name"
+        private const val MODEL_NAME = "UserParameter"
+        private const val ID_COLUMN_NAME = "_id"
+        private const val NAME_COLUMN_NAME = "name"
         const val VALUE_COLUMN_NAME = "value"
 
         val createQuery
@@ -46,13 +30,12 @@ class UserParameter {
 
 
         fun getUserParametersList(cursor: Cursor?): ArrayList<UserParameter> {
-            var result: ArrayList<UserParameter> = ArrayList()
+            val result: ArrayList<UserParameter> = ArrayList()
             if (cursor!!.moveToFirst()) {
                 result.add(getUserParameter(cursor))
                 while (cursor.moveToNext()) {
                     result.add(getUserParameter(cursor))
                 }
-                cursor.close()
             }
             return result
         }

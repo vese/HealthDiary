@@ -20,10 +20,12 @@ import kotlin.math.pow
 class ParametersFragment : Fragment() {
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
+        val dateFormat =
+            SimpleDateFormat(getString(R.string.date_format), Locale(getString(R.string.ru)))
         val root = inflater.inflate(R.layout.fragment_parameters, container, false)
 
         //params controls
@@ -41,7 +43,7 @@ class ParametersFragment : Fragment() {
             inputWeight.setText(lastUserParameters.weight.toString())
             inputHeight.setText(lastUserParameters.height.toString())
             val userParametersList = dbHandler.getUserParametersList()
-            fillTable(userParametersList, resultsTable, container!!.context)
+            fillTable(userParametersList, resultsTable, container.context)
         }
         val c = Calendar.getInstance()
         var birthDate = ""
@@ -50,20 +52,24 @@ class ParametersFragment : Fragment() {
         var birthDay = c.get(Calendar.DAY_OF_MONTH)
         val userParameterList = dbHandler.getUserParameterList()
         for (userParameter in userParameterList) {
-            if (userParameter.name == "birthDate") {
+            if (userParameter.name == getString(R.string.birth_date_key)) {
                 birthDate = userParameter.value
-                val dateParams = birthDate.split(".").toTypedArray()
+                val dateParams = birthDate.split(getString(R.string.dot)).toTypedArray()
                 birthDay = dateParams[0].toInt()
                 birthMonth = dateParams[1].toInt()
                 birthYear = dateParams[2].toInt()
-                var age = getAge(birthDay, birthMonth, birthYear)
+                val age = getAge(birthDay, birthMonth, birthYear)
                 if (age >= 0) {
-                    ageText.text = "Your age is $age"
+                    ageText.text = getString(R.string.your_age, age)
                 }
-            } else if (userParameter.name == "sex") {
-                val adapter = ArrayAdapter(container!!.context, R.layout.fragment_parameters ,container!!.context.resources.getStringArray(R.array.sex_list))
+            } else if (userParameter.name == getString(R.string.sex_key)) {
+                val adapter = ArrayAdapter(
+                    container.context,
+                    R.layout.fragment_parameters,
+                    container.context.resources.getStringArray(R.array.sex_list)
+                )
                 sexSpinner.setSelection(adapter.getPosition(userParameter.value))
-            } else if (userParameter.name == "massIndex") {
+            } else if (userParameter.name == getString(R.string.mass_index_key)) {
                 hintText.text = getHint(userParameter.value.toFloat())
             }
         }
@@ -71,18 +77,25 @@ class ParametersFragment : Fragment() {
         //birth date
         val chooseDateButton: Button = root.findViewById(R.id.button_choose_date)
         chooseDateButton.setOnClickListener {
-            val dpd = DatePickerDialog(container!!.context, DatePickerDialog.OnDateSetListener { _, year, monthOfYear, dayOfMonth ->
-                var age = getAge(dayOfMonth, monthOfYear, year)
-                if (age >= 0) {
-                    ageText.text = "Your age is $age"
-                }
+            val dpd = DatePickerDialog(
+                container.context,
+                DatePickerDialog.OnDateSetListener { _, year, monthOfYear, dayOfMonth ->
+                    val age = getAge(dayOfMonth, monthOfYear, year)
+                    if (age >= 0) {
+                        ageText.text = getString(R.string.your_age, age)
+                    }
 
-                birthDate = "$dayOfMonth.$monthOfYear.$year"
+                    birthDate =
+                        dateFormat.format(dateFormat.parse("$dayOfMonth.${monthOfYear + 1}.$year")!!)
 
-                birthYear = year
-                birthMonth = monthOfYear
-                birthDay = dayOfMonth
-            }, birthYear, birthMonth, birthDay)
+                    birthYear = year
+                    birthMonth = monthOfYear
+                    birthDay = dayOfMonth
+                },
+                birthYear,
+                birthMonth,
+                birthDay
+            )
 
             dpd.show()
         }
@@ -93,24 +106,46 @@ class ParametersFragment : Fragment() {
             val weight = inputWeight.text.toString()
             val height = inputHeight.text.toString()
             if (weight == "" || height == "" || birthDate == "") {
-                Toast.makeText(container!!.context, "Fill empty inputs!", Toast.LENGTH_LONG).show()
+                Toast.makeText(
+                    container.context,
+                    getString(R.string.fill_empty_imputs),
+                    Toast.LENGTH_LONG
+                ).show()
             } else {
-                dbHandler.updateUserParameter(UserParameter("birthDate", birthDate))
+                dbHandler.updateUserParameter(
+                    UserParameter(
+                        getString(R.string.birth_date_key),
+                        birthDate
+                    )
+                )
 
-                dbHandler.updateUserParameter(UserParameter("sex", sexSpinner.selectedItem.toString()))
+                dbHandler.updateUserParameter(
+                    UserParameter(
+                        getString(R.string.sex_key),
+                        sexSpinner.selectedItem.toString()
+                    )
+                )
 
                 val userParameters = UserParameters(weight.toFloat(), height.toFloat())
                 dbHandler.insertUserParameters(userParameters)
 
                 val massIndex = getMassIndex(userParameters)
-                dbHandler.updateUserParameter(UserParameter("massIndex", massIndex.toString()))
+                dbHandler.updateUserParameter(
+                    UserParameter(
+                        getString(R.string.mass_index_key),
+                        massIndex.toString()
+                    )
+                )
                 hintText.text = getHint(massIndex)
 
                 val result = dbHandler.getUserParametersList()
-                fillTable(result, resultsTable, container!!.context)
+                fillTable(result, resultsTable, container.context)
 
-                Toast.makeText(container!!.context, "New values were saved!", Toast.LENGTH_LONG)
-                    .show()
+                Toast.makeText(
+                    container.context,
+                    getString(R.string.values_saved),
+                    Toast.LENGTH_LONG
+                ).show()
             }
         }
 
@@ -123,8 +158,7 @@ class ParametersFragment : Fragment() {
         val currentMonth = currentDate.get(Calendar.MONTH)
         val currentDay = currentDate.get(Calendar.DAY_OF_MONTH)
         var age = currentYear - year
-        if (currentMonth < month || currentMonth == month && currentDay < day)
-        {
+        if (currentMonth < month || currentMonth == month && currentDay < day) {
             age--
         }
         return age
@@ -136,22 +170,29 @@ class ParametersFragment : Fragment() {
 
     private fun getHint(massIndex: Float): String {
         return when {
-            massIndex < 18.5f -> "The deficit of body weight"
-            massIndex < 25 -> "Normal body weight"
-            massIndex < 30 -> "Excess body weight"
-            massIndex < 35 -> "1st degree obesity"
-            massIndex < 40 -> "2d degree obesity"
-            else -> "3d degree obesity"
+            massIndex < 18.5f -> getString(R.string.mass_index_hint1)
+            massIndex < 25 -> getString(R.string.mass_index_hint2)
+            massIndex < 30 -> getString(R.string.mass_index_hint3)
+            massIndex < 35 -> getString(R.string.mass_index_hint4)
+            massIndex < 40 -> getString(R.string.mass_index_hint5)
+            else -> getString(R.string.mass_index_hint6)
         }
     }
 
-    private fun fillTable(userParametersList: ArrayList<UserParameters>, resultsTable: TableLayout, context: Context) {
+    private fun fillTable(
+        userParametersList: ArrayList<UserParameters>,
+        resultsTable: TableLayout,
+        context: Context
+    ) {
         val tableRow = TableRow(context)
         resultsTable.removeAllViews()
-        tableRow.layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
-        tableRow.addView(fillCell("Date", context))
-        tableRow.addView(fillCell("Weight", context))
-        tableRow.addView(fillCell("Height", context))
+        tableRow.layoutParams = ViewGroup.LayoutParams(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
+        tableRow.addView(fillCell(getString(R.string.date), context))
+        tableRow.addView(fillCell(getString(R.string.weight), context))
+        tableRow.addView(fillCell(getString(R.string.height), context))
         resultsTable.addView(tableRow)
         for (userParameters in userParametersList) {
             resultsTable.addView(fillRow(userParameters, context))
@@ -161,7 +202,10 @@ class ParametersFragment : Fragment() {
 
     private fun fillRow(userParameters: UserParameters, context: Context): TableRow {
         val tableRow = TableRow(context)
-        tableRow.layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+        tableRow.layoutParams = ViewGroup.LayoutParams(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
         tableRow.addView(fillCell(userParameters.date, context))
         tableRow.addView(fillCell(userParameters.weight.toString(), context))
         tableRow.addView(fillCell(userParameters.height.toString(), context))
@@ -170,7 +214,11 @@ class ParametersFragment : Fragment() {
 
     private fun fillCell(value: String, context: Context): TextView {
         val cell = TextView(context)
-        cell.layoutParams = TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT, 1f)
+        cell.layoutParams = TableRow.LayoutParams(
+            TableRow.LayoutParams.MATCH_PARENT,
+            TableRow.LayoutParams.WRAP_CONTENT,
+            1f
+        )
         cell.text = value
         return cell
     }
