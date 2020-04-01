@@ -24,10 +24,10 @@
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.healthdiary.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_planning"
+        android:name="com.example.healthdiary.ui.planning.PlanningFragment"
+        android:label="@string/menu_planning"
+        tools:layout="@layout/fragment_planning" />
 
     <fragment
         android:id="@+id/nav_tools"

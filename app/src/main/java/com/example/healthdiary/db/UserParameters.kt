@@ -12,7 +12,7 @@ class UserParameters {
     var height: Float
 
     constructor(weight: Float, height: Float) {
-        this.date = SimpleDateFormat(DATE_FORMAT).format(Date())
+        this.date = SimpleDateFormat(DATE_FORMAT, Locale("ru")).format(Date())
         this.weight = weight
         this.height = height
     }
@@ -23,32 +23,34 @@ class UserParameters {
         this.height = height
     }
 
-    val contentValues: ContentValues get() {
-        val values = ContentValues()
-        values.put(DATE_COLUMN_NAME, date)
-        values.put(WEIGHT_COLUMN_NAME, weight)
-        values.put(HEIGHT_COLUMN_NAME, height)
-        return values
-    }
+    val contentValues: ContentValues
+        get() {
+            val values = ContentValues()
+            values.put(DATE_COLUMN_NAME, date)
+            values.put(WEIGHT_COLUMN_NAME, weight)
+            values.put(HEIGHT_COLUMN_NAME, height)
+            return values
+        }
 
     companion object {
         const val MODEL_NAME = "UserParameters"
-        const val ID_COLUMN_NAME = "_id"
+        private const val ID_COLUMN_NAME = "_id"
         const val DATE_COLUMN_NAME = "date"
         const val WEIGHT_COLUMN_NAME = "weight"
         const val HEIGHT_COLUMN_NAME = "height"
         const val DATE_FORMAT = "dd.MM.yyyy"
 
-        val createQuery get() = "CREATE TABLE $MODEL_NAME (" +
-                "$ID_COLUMN_NAME INTEGER PRIMARY KEY," +
-                "$DATE_COLUMN_NAME TEXT," +
-                "$WEIGHT_COLUMN_NAME REAL," +
-                "$HEIGHT_COLUMN_NAME REAL" +
-                ")"
+        val createQuery
+            get() = "CREATE TABLE $MODEL_NAME (" +
+                    "$ID_COLUMN_NAME INTEGER PRIMARY KEY," +
+                    "$DATE_COLUMN_NAME TEXT," +
+                    "$WEIGHT_COLUMN_NAME REAL," +
+                    "$HEIGHT_COLUMN_NAME REAL" +
+                    ")"
 
         val dropQuery get() = "DROP TABLE IF EXISTS $MODEL_NAME"
 
-        val selectQuery get() = "SELECT * FROM $MODEL_NAME ORDER BY $ID_COLUMN_NAME DESC LIMIT 5"
+        val selectQuery get() = "SELECT * FROM $MODEL_NAME ORDER BY $ID_COLUMN_NAME DESC"
 
         val selectLastQuery get() = "SELECT * FROM $MODEL_NAME ORDER BY $ID_COLUMN_NAME DESC LIMIT 1"
 
@@ -57,7 +59,7 @@ class UserParameters {
         }
 
         fun getUserParametersList(cursor: Cursor?): ArrayList<UserParameters> {
-            var result: ArrayList<UserParameters> = ArrayList()
+            val result: ArrayList<UserParameters> = ArrayList()
             if (cursor!!.moveToFirst()) {
                 result.add(getUserParameters(cursor))
                 while (cursor.moveToNext()) {
@@ -69,9 +71,11 @@ class UserParameters {
         }
 
         fun getUserParameters(cursor: Cursor): UserParameters {
-            return UserParameters(cursor.getString(cursor.getColumnIndex(DATE_COLUMN_NAME)),
+            return UserParameters(
+                cursor.getString(cursor.getColumnIndex(DATE_COLUMN_NAME)),
                 cursor.getString(cursor.getColumnIndex(WEIGHT_COLUMN_NAME)).toFloat(),
-                cursor.getString(cursor.getColumnIndex(HEIGHT_COLUMN_NAME)).toFloat())
+                cursor.getString(cursor.getColumnIndex(HEIGHT_COLUMN_NAME)).toFloat()
+            )
         }
     }
 }
