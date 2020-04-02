@@ -39,7 +39,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_parameters,
                 R.id.nav_medicaments,
                 R.id.nav_recommendations,
-                R.id.nav_gallery, R.id.nav_planning,
+                R.id.nav_statistics,
+                R.id.nav_planning,
                 R.id.nav_tools, R.id.nav_share, R.id.nav_exit
             ), drawerLayout
         )
