@@ -9,7 +9,7 @@
 
     <string name="menu_parameters">Parameters monitoring</string>
     <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_planning">Planning</string>
     <string name="menu_tools">Tools</string>
     <string name="menu_recommendations">Recommendations</string>
     <string name="menu_share">Share</string>
@@ -21,9 +21,51 @@
     <string name="title_dosage">Dosage</string>
     <string name="manufacturer_title">Manufacturer</string>
     <string name="title_price">Price</string>
+    <string name="input_your_sex">Input your sex</string>
+    <string name="input_your_birth_date">Input your birth date</string>
+    <string name="input">Input</string>
+    <string name="choose_your_birth_date">Choose your birth date.</string>
+    <string name="input_your_weight">Input your weight</string>
+    <string name="input_your_height">Input your height</string>
+    <string name="input_your_parameters_and_get_a_hint">Input your parameters and get a hint.</string>
+    <string name="save">Save</string>
+    <string name="date">Date</string>
+    <string name="weight">Weight</string>
+    <string name="height">Height</string>
+    <string name="planned_event">Planned event</string>
+    <string name="new_plan_added">New plan was added!</string>
+    <string name="medicine_taking">Прием лекарства</string>
+    <string name="date_format">dd.MM.yyyy</string>
+    <string name="title_date_format">MMMM yyyy</string>
+    <string name="fill_empty_imputs">Fill empty inputs!</string>
+    <string name="birth_date_key">birthDate</string>
+    <string name="sex_key">sex</string>
+    <string name="mass_index_key">massIndex</string>
+    <string name="values_saved">New values were saved!</string>
+    <string name="ru">ru</string>
+    <string name="mass_index_hint1">The deficit of body weight</string>
+    <string name="mass_index_hint2">Normal body weight</string>
+    <string name="mass_index_hint3">Excess body weight</string>
+    <string name="mass_index_hint4">1st degree obesity</string>
+    <string name="mass_index_hint5">2d degree obesity</string>
+    <string name="mass_index_hint6">3d degree obesity</string>
+    <string name="dot">.</string>
+    <string name="your_age">Your age is %d</string>
 
     <string-array name="sex_list">
         <item>Female</item>
         <item>Male</item>
+    </string-array>
+
+    <string-array name="plan_list">
+        <item>Прием лекарства</item>
+        <item>Сдача анализа</item>
+        <item>Запись к врачу</item>
+    </string-array>
+
+    <string-array name="medicaments_list">
+        <item>Глицин</item>
+        <item>Кагоцел</item>
+        <item>Полидекса</item>
     </string-array>
 </resources>

@@ -9,16 +9,17 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
     SQLiteOpenHelper(context, DATABASE_NAME, factory, DATABASE_VERSION) {
 
     constructor(context: Context) : this(context, null)
-
     override fun onCreate(db: SQLiteDatabase) {
         db.execSQL(UserParameters.createQuery)
         db.execSQL(UserParameter.createQuery)
+        db.execSQL(Plan.createQuery)
         db.execSQL(Medicament.createQuery)
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
         db.execSQL(UserParameters.dropQuery)
         db.execSQL(UserParameter.dropQuery)
+        db.execSQL(Plan.dropQuery)
         db.execSQL(Medicament.dropQuery)
         onCreate(db)
     }
@@ -26,6 +27,7 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
     override fun onDowngrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
         db.execSQL(UserParameters.dropQuery)
         db.execSQL(UserParameter.dropQuery)
+        db.execSQL(Plan.dropQuery)
         db.execSQL(Medicament.dropQuery)
         onCreate(db)
     }
@@ -49,7 +51,7 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
 
     fun insertUserParameters(userParameters: UserParameters) {
         val lastUserParameters = getLastUserParameters()
-        if (lastUserParameters != null && lastUserParameters.date == userParameters.date){
+        if (lastUserParameters != null && lastUserParameters.date == userParameters.date) {
             if (lastUserParameters.weight != userParameters.weight || lastUserParameters.height != userParameters.height) {
                 val db = this.writableDatabase
                 db.execSQL(UserParameters.getUpdateQuery(userParameters))
@@ -66,22 +68,48 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
     fun getUserParameterList(): ArrayList<UserParameter> {
         val db = this.readableDatabase
         val cursor = db.rawQuery(UserParameter.selectQuery, null)
-        return UserParameter.getUserParametersList(cursor)
+        val result = UserParameter.getUserParametersList(cursor)
+        cursor.close()
+        return result
     }
 
     fun getUserParameter(name: String): String? {
         val db = this.readableDatabase
         val cursor = db.rawQuery(UserParameter.getParameterQuery(name), null)
-        return if (cursor!!.moveToFirst()) {
+        val result = if (cursor!!.moveToFirst()) {
             cursor.getString(cursor.getColumnIndex(UserParameter.VALUE_COLUMN_NAME))
         } else {
             null
         }
+        cursor.close()
+        return result
     }
 
     fun updateUserParameter(userParameter: UserParameter) {
         val db = this.readableDatabase
         db.execSQL(UserParameter.getUpdateQuery(userParameter))
+    }
+
+    //plan
+    fun getPlansByDate(date: String): ArrayList<Plan> {
+        val db = this.readableDatabase
+        val cursor = db.rawQuery(Plan.getSelectByDateQuery(date), null)
+        val result = Plan.getPlanList(cursor)
+        cursor.close()
+        return result
+    }
+
+    fun getPlansList(): ArrayList<Plan> {
+        val db = this.readableDatabase
+        val cursor = db.rawQuery(Plan.selectQuery, null)
+        val result = Plan.getPlanList(cursor)
+        cursor.close()
+        return result
+    }
+
+    fun insertPlan(plan: Plan) {
+        val db = this.readableDatabase
+        db.execSQL(Plan.getInsertQuery(plan))
     }
 
     fun getMedicaments(): List<Medicament> {
@@ -96,8 +124,9 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
         db.close()
     }
 
+
     companion object {
-        private const val DATABASE_VERSION = 3
+        private const val DATABASE_VERSION = 5
         private const val DATABASE_NAME = "healthDiary.db"
     }
 }

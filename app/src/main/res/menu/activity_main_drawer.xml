@@ -1,45 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:showIn="navigation_view">
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_parameters"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="@string/menu_parameters" />
+                android:id="@+id/nav_parameters"
+                android:icon="@drawable/ic_menu_camera"
+                android:title="@string/menu_parameters" />
         <item
                 android:id="@+id/nav_medicaments"
                 android:icon="@android:drawable/ic_dialog_info"
                 android:title="@string/menu_medicaments" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/menu_gallery" />
+                android:id="@+id/nav_gallery"
+                android:icon="@drawable/ic_menu_gallery"
+                android:title="@string/menu_gallery" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
+                android:id="@+id/nav_planning"
+                android:icon="@drawable/ic_menu_planning"
+                android:title="@string/menu_planning" />
         <item
-            android:id="@+id/nav_tools"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="@string/menu_tools" />
+                android:id="@+id/nav_tools"
+                android:icon="@drawable/ic_menu_manage"
+                android:title="@string/menu_tools" />
         <item
-            android:id="@+id/nav_recommendations"
-            android:icon="@android:drawable/ic_menu_view"
-            android:title="@string/menu_recommendations" />
+                android:id="@+id/nav_recommendations"
+                android:icon="@android:drawable/ic_menu_view"
+                android:title="@string/menu_recommendations" />
     </group>
 
     <item android:title="Communicate">
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="@string/menu_share" />
+                    android:id="@+id/nav_share"
+                    android:icon="@drawable/ic_menu_share"
+                    android:title="@string/menu_share" />
             <item
-                android:id="@+id/nav_exit"
-                android:icon="@drawable/ic_menu_exit"
-                android:title="@string/menu_exit" />
+                    android:id="@+id/nav_exit"
+                    android:icon="@drawable/ic_menu_exit"
+                    android:title="@string/menu_exit" />
         </menu>
     </item>
 
