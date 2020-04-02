@@ -112,6 +112,7 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
         db.execSQL(Plan.getInsertQuery(plan))
     }
 
+    //medicaments
     fun getMedicaments(): List<Medicament> {
         val db = this.readableDatabase
         val cursor = db.rawQuery(Medicament.selectQuery, null)
