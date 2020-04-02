@@ -13,11 +13,13 @@ import androidx.fragment.app.Fragment
 import com.example.healthdiary.R
 import com.example.healthdiary.db.DBHelper
 import com.example.healthdiary.db.Plan
+import com.example.healthdiary.model.medicaments.Medicament
 import com.github.sundeepk.compactcalendarview.CompactCalendarView
 import com.github.sundeepk.compactcalendarview.domain.Event
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
+import kotlin.reflect.KProperty1
 
 class PlanningFragment : Fragment() {
 
@@ -40,6 +42,12 @@ class PlanningFragment : Fragment() {
         val monthText: TextView = root.findViewById(R.id.month_text)
         val compactCalendar: CompactCalendarView = root.findViewById(R.id.compactcalendar_view)
 
+        medSpinner.adapter = ArrayAdapter(
+            container.context,
+            android.R.layout.simple_spinner_dropdown_item,
+            dbHandler.getMedicaments().listOfField(Medicament::name)
+        )
+
         compactCalendar.setUseThreeLetterAbbreviation(true)
         monthText.text =
             titleDateFormat.format(compactCalendar.firstDayOfCurrentMonth)
@@ -48,7 +56,7 @@ class PlanningFragment : Fragment() {
 
         var dayPlansCount = loadPlans(
             root,
-            container!!.context,
+            container.context,
             dbHandler,
             chosenDate
         )
@@ -109,8 +117,16 @@ class PlanningFragment : Fragment() {
         return root
     }
 
+    private inline fun <reified T, Y> List<T>.listOfField(property: KProperty1<T, Y>):List<Y> {
+        val yy = ArrayList<Y>()
+        this.forEach { t: T ->
+            yy.add(property.get(t))
+        }
+        return yy
+    }
+
     private fun loadPlans(root: View, context: Context, dbHandler: DBHelper, date: String): Int {
-        val plans = dbHandler.getPlansByDate(date);
+        val plans = dbHandler.getPlansByDate(date)
         val resultsTable: TableLayout = root.findViewById(R.id.results_table)
         fillTable(plans, resultsTable, context)
         return plans.count()
