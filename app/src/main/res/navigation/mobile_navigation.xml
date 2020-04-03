@@ -24,10 +24,10 @@
         tools:layout="@layout/fragment_watertrack" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.healthdiary.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_planning"
+        android:name="com.example.healthdiary.ui.planning.PlanningFragment"
+        android:label="@string/menu_planning"
+        tools:layout="@layout/fragment_planning" />
 
     <fragment
         android:id="@+id/nav_tools"
@@ -42,10 +42,10 @@
         tools:layout="@layout/fragment_share" />
 
     <fragment
-        android:id="@+id/nav_send"
-        android:name="com.example.healthdiary.ui.send.SendFragment"
-        android:label="@string/menu_send"
-        tools:layout="@layout/fragment_send" />
+        android:id="@+id/nav_exit"
+        android:name="com.example.healthdiary.ui.exit.ExitFragment"
+        android:label="@string/menu_exit"
+        tools:layout="@layout/fragment_exit" />
 
     <fragment
         android:id="@+id/nav_recommendations"
