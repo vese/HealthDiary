@@ -40,8 +40,11 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_medicaments,
                 R.id.nav_recommendations,
                 R.id.nav_statistics,
+                R.id.nav_watertrack,
                 R.id.nav_planning,
-                R.id.nav_tools, R.id.nav_share, R.id.nav_exit
+                R.id.nav_tools,
+                R.id.nav_share,
+                R.id.nav_exit
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)

@@ -8,6 +8,7 @@
     <string name="action_settings">Settings</string>
 
     <string name="menu_parameters">Parameters monitoring</string>
+    <string name="menu_watertrack">Water Track</string>
     <string name="menu_statistics">Statistics</string>
     <string name="menu_planning">Planning</string>
     <string name="menu_tools">Tools</string>
@@ -61,11 +62,5 @@
         <item>Прием лекарства</item>
         <item>Сдача анализа</item>
         <item>Запись к врачу</item>
-    </string-array>
-
-    <string-array name="medicaments_list">
-        <item>Глицин</item>
-        <item>Кагоцел</item>
-        <item>Полидекса</item>
     </string-array>
 </resources>

@@ -17,6 +17,10 @@
                 android:icon="@android:drawable/ic_menu_myplaces"
                 android:title="@string/menu_statistics" />
         <item
+            android:id="@+id/nav_watertrack"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="@string/menu_watertrack" />
+        <item
                 android:id="@+id/nav_planning"
                 android:icon="@drawable/ic_menu_planning"
                 android:title="@string/menu_planning" />

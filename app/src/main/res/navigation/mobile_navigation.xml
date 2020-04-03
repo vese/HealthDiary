@@ -18,10 +18,10 @@
         tools:layout="@layout/fragment_medicaments" />
 
     <fragment
-        android:id="@+id/nav_statistics"
-        android:name="com.example.healthdiary.ui.statistics.StatisticsFragment"
-        android:label="@string/menu_statistics"
-        tools:layout="@layout/fragment_statistics" />
+        android:id="@+id/nav_watertrack"
+        android:name="com.example.healthdiary.ui.watertrack.WaterTrackFragment"
+        android:label="@string/menu_watertrack"
+        tools:layout="@layout/fragment_watertrack" />
 
     <fragment
         android:id="@+id/nav_planning"
@@ -30,10 +30,10 @@
         tools:layout="@layout/fragment_planning" />
 
     <fragment
-        android:id="@+id/nav_tools"
-        android:name="com.example.healthdiary.ui.statistics.ToolsFragment"
-        android:label="@string/menu_tools"
-        tools:layout="@layout/fragment_statistics" />
+            android:id="@+id/nav_statistics"
+            android:name="com.example.healthdiary.ui.statistics.StatisticsFragment"
+            android:label="@string/menu_statistics"
+            tools:layout="@layout/fragment_statistics" />
 
     <fragment
         android:id="@+id/nav_share"
