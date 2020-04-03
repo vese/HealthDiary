@@ -63,4 +63,9 @@
         <item>Сдача анализа</item>
         <item>Запись к врачу</item>
     </string-array>
+
+    <string-array name="statistics_list">
+        <item>Рост</item>
+        <item>Вес</item>
+    </string-array>
 </resources>
