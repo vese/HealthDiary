@@ -30,7 +30,7 @@ class UserParameter {
         val createQuery
             get() = "CREATE TABLE $MODEL_NAME (" +
                     "$ID_COLUMN_NAME INTEGER PRIMARY KEY," +
-                    "$NAME_COLUMN_NAME TEXT," +
+                    "$NAME_COLUMN_NAME TEXT UNIQUE," +
                     "$VALUE_COLUMN_NAME TEXT" +
                     ")"
 
@@ -42,8 +42,8 @@ class UserParameter {
             "SELECT $VALUE_COLUMN_NAME FROM $MODEL_NAME WHERE $NAME_COLUMN_NAME = '$name' ORDER BY $ID_COLUMN_NAME DESC"
 
         fun getUpdateQuery(userParameter: UserParameter) =
-            "INSERT OR IGNORE INTO $MODEL_NAME ($NAME_COLUMN_NAME, $VALUE_COLUMN_NAME) VALUES ('${userParameter.name}', '${userParameter.value}');" +
-                    "UPDATE $MODEL_NAME SET $VALUE_COLUMN_NAME = '${userParameter.value}' WHERE $NAME_COLUMN_NAME = '${userParameter.name}';"
+            "INSERT OR REPLACE INTO $MODEL_NAME ($NAME_COLUMN_NAME, $VALUE_COLUMN_NAME) VALUES" +
+                    " ('${userParameter.name}', '${userParameter.value}');"
 
 
         fun getUserParametersList(cursor: Cursor?): ArrayList<UserParameter> {

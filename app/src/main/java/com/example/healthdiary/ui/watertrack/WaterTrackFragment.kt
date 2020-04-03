@@ -7,12 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import com.example.healthdiary.R
 import com.example.healthdiary.db.DBHelper
 import com.example.healthdiary.db.WaterTrackParameters
-import kotlinx.android.synthetic.main.fragment_watertrack.*
 
 class WaterTrackFragment : Fragment() {
 
@@ -65,13 +62,13 @@ class WaterTrackFragment : Fragment() {
     private fun updateScreen(dailyRate: Int, currentIntake: Int, root: View)
     {
         val waterProgressBar: ProgressBar = root.findViewById(R.id.circularProgressbar)
-        val percentTextView: TextView = root.findViewById(R.id.tv)
+        val percentTextView: TextView = root.findViewById(R.id.percentTextView)
         val normTextView: TextView = root.findViewById(R.id.normTextView)
 
         var progressPercent = (currentIntake.toFloat() / dailyRate * 100).toInt();
         waterProgressBar.setProgress(progressPercent);
         percentTextView.text = "${progressPercent.toString()} %";
-        normTextView.text = "${currentIntake.toString()} / ${dailyRate.toString()}"
+        normTextView.text = "${currentIntake.toString()} / ${dailyRate.toString()} мл"
     }
 
     private fun calculateDailyRate(userWeight: Float?, userSex: String?, context: Context): Int {

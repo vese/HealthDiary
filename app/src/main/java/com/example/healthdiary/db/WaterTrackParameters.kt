@@ -29,23 +29,21 @@ class WaterTrackParameters {
         val createQuery
             get() = "CREATE TABLE $MODEL_NAME (" +
                     "$ID_COLUMN_NAME INTEGER PRIMARY KEY," +
-                    "$DATE_COLUMN_NAME TEXT," +
+                    "$DATE_COLUMN_NAME TEXT UNIQUE," +
                     "$CURRENTINTAKE_COLUMN_NAME INTEGER" +
                     ")"
 
         val dropQuery get() = "DROP TABLE IF EXISTS $MODEL_NAME"
 
-        val selectQuery get() = "SELECT * FROM $MODEL_NAME ORDER BY $ID_COLUMN_NAME DESC"
+        val selectQuery get() = "SELECT * FROM $MODEL_NAME ORDER BY $ID_COLUMN_NAME"
 
         val selectLastQuery
             get() = "SELECT * FROM $MODEL_NAME " +
                     "WHERE $DATE_COLUMN_NAME = '${SimpleDateFormat(DATE_FORMAT).format(Date())}'"
 
         fun getUpdateQuery(waterTrackParameters: WaterTrackParameters) =
-            "INSERT OR IGNORE INTO $MODEL_NAME ($CURRENTINTAKE_COLUMN_NAME, $DATE_COLUMN_NAME) " +
-                    "VALUES (${waterTrackParameters.currentIntake},'${waterTrackParameters.date}');" +
-                    "UPDATE $MODEL_NAME SET $CURRENTINTAKE_COLUMN_NAME = ${waterTrackParameters.currentIntake} " +
-                    "WHERE $DATE_COLUMN_NAME = '${waterTrackParameters.date}';"
+            "INSERT OR REPLACE INTO $MODEL_NAME ($CURRENTINTAKE_COLUMN_NAME, $DATE_COLUMN_NAME) " +
+                    "VALUES (${waterTrackParameters.currentIntake},'${waterTrackParameters.date}') "
 
         fun getWaterTrackParametersList(cursor: Cursor?): ArrayList<WaterTrackParameters> {
             var result: ArrayList<WaterTrackParameters> = ArrayList()

@@ -18,7 +18,7 @@
         tools:layout="@layout/fragment_medicaments" />
 
     <fragment
-        android:id="@+id/nav_gallery"
+        android:id="@+id/nav_watertrack"
         android:name="com.example.healthdiary.ui.watertrack.WaterTrackFragment"
         android:label="@string/menu_watertrack"
         tools:layout="@layout/fragment_watertrack" />
