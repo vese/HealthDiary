@@ -13,6 +13,10 @@
                 android:icon="@android:drawable/ic_dialog_info"
                 android:title="@string/menu_medicaments" />
         <item
+                android:id="@+id/nav_statistics"
+                android:icon="@android:drawable/ic_menu_myplaces"
+                android:title="@string/menu_statistics" />
+        <item
             android:id="@+id/nav_watertrack"
             android:icon="@drawable/ic_menu_gallery"
             android:title="@string/menu_watertrack" />
