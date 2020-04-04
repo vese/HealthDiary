@@ -12,9 +12,9 @@ import com.example.healthdiary.R
 import com.example.healthdiary.db.DBHelper
 import com.example.healthdiary.db.UserParameter
 import com.example.healthdiary.db.UserParameters
+import com.example.healthdiary.util.*
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
 import kotlin.math.pow
 
 class ParametersFragment : Fragment() {
@@ -170,12 +170,12 @@ class ParametersFragment : Fragment() {
 
     private fun getHint(massIndex: Float): String {
         return when {
-            massIndex < 18.5f -> getString(R.string.mass_index_hint1)
-            massIndex < 25 -> getString(R.string.mass_index_hint2)
-            massIndex < 30 -> getString(R.string.mass_index_hint3)
-            massIndex < 35 -> getString(R.string.mass_index_hint4)
-            massIndex < 40 -> getString(R.string.mass_index_hint5)
-            else -> getString(R.string.mass_index_hint6)
+            massIndex < DEFICIT -> getString(R.string.mass_index_deficit_hint)
+            massIndex < NORMAL -> getString(R.string.mass_index_normal_hint)
+            massIndex < EXCESS -> getString(R.string.mass_index_excess_hint)
+            massIndex < FIRST_DEGREE_OBESITY -> getString(R.string.mass_index_first_degree_hint)
+            massIndex < SECOND_DEGREE_OBESITY -> getString(R.string.mass_index_second_degree_hint)
+            else -> getString(R.string.mass_index_third_degree_hint)
         }
     }
 
