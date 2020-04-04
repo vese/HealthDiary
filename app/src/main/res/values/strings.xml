@@ -44,12 +44,12 @@
     <string name="mass_index_key">massIndex</string>
     <string name="values_saved">New values were saved!</string>
     <string name="ru">ru</string>
-    <string name="mass_index_hint1">The deficit of body weight</string>
-    <string name="mass_index_hint2">Normal body weight</string>
-    <string name="mass_index_hint3">Excess body weight</string>
-    <string name="mass_index_hint4">1st degree obesity</string>
-    <string name="mass_index_hint5">2d degree obesity</string>
-    <string name="mass_index_hint6">3d degree obesity</string>
+    <string name="mass_index_deficit_hint">The deficit of body weight</string>
+    <string name="mass_index_normal_hint">Normal body weight</string>
+    <string name="mass_index_excess_hint">Excess body weight</string>
+    <string name="mass_index_first_degree_hint">1st degree obesity</string>
+    <string name="mass_index_second_degree_hint">2d degree obesity</string>
+    <string name="mass_index_third_degree_hint">3d degree obesity</string>
     <string name="dot">.</string>
     <string name="your_age">Your age is %d</string>
 
@@ -67,5 +67,6 @@
     <string-array name="statistics_list">
         <item>Рост</item>
         <item>Вес</item>
+        <item>ИМТ</item>
     </string-array>
 </resources>
