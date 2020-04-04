@@ -9,6 +9,7 @@
 
     <string name="menu_parameters">Parameters monitoring</string>
     <string name="menu_watertrack">Water Track</string>
+    <string name="menu_statistics">Statistics</string>
     <string name="menu_planning">Planning</string>
     <string name="menu_tools">Tools</string>
     <string name="menu_recommendations">Recommendations</string>
@@ -61,5 +62,10 @@
         <item>Прием лекарства</item>
         <item>Сдача анализа</item>
         <item>Запись к врачу</item>
+    </string-array>
+
+    <string-array name="statistics_list">
+        <item>Рост</item>
+        <item>Вес</item>
     </string-array>
 </resources>
