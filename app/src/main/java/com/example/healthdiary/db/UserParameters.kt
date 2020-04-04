@@ -5,6 +5,7 @@ import android.database.Cursor
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
+import kotlin.math.pow
 
 class UserParameters {
     var date: String
@@ -21,6 +22,10 @@ class UserParameters {
         this.date = date
         this.weight = weight
         this.height = height
+    }
+
+    fun getMassIndex(): Float {
+        return this.weight / (this.height / 100f).pow(2)
     }
 
     val contentValues: ContentValues
