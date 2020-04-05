@@ -29,22 +29,12 @@
                 android:icon="@drawable/bulb_icon"
                 android:title="@string/menu_recommendations" />
         <item
-                android:id="@+id/nav_tools"
-                android:icon="@drawable/ic_menu_manage"
-                android:title="@string/menu_tools" />
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="@string/menu_share" />
+        <item
+                android:id="@+id/nav_exit"
+                android:icon="@drawable/ic_menu_exit"
+                android:title="@string/menu_exit" />
     </group>
-
-    <item android:title="Communicate">
-        <menu>
-            <item
-                    android:id="@+id/nav_share"
-                    android:icon="@drawable/ic_menu_share"
-                    android:title="@string/menu_share" />
-            <item
-                    android:id="@+id/nav_exit"
-                    android:icon="@drawable/ic_menu_exit"
-                    android:title="@string/menu_exit" />
-        </menu>
-    </item>
-
 </menu>
