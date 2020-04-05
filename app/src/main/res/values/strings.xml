@@ -48,6 +48,23 @@
     <string name="dot">.</string>
     <string name="your_age">Ваш возраст %d</string>
     <string name="recommendation_text">Текст рекомендации</string>
+    <string name="water_control">Контроль количества выпитой жидкости</string>
+    <string name="zero_percent">0%</string>
+    <string name="ml">ml</string>
+    <string name="water">Вода</string>
+    <string name="juice">Сок</string>
+    <string name="milk">Молоко</string>
+    <string name="cofee">Кофе</string>
+    <string name="tea">Чай</string>
+    <string name="count">Количество:</string>
+    <string name="add">Добавить</string>
+    <string name="male">Мужской</string>
+    <string name="not_enough_data">Недостаточно данных!</string>
+    <string name="progress_percent">%d %%</string>
+    <string name="water_current">%d / %d мл</string>
+    <string name="no_events">Нет событий</string>
+    <string name="adding">Добавление</string>
+    <string name="month">Month</string>
 
     <string-array name="sex_list">
         <item>Женский</item>

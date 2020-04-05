@@ -6,9 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Spinner
+import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import com.example.healthdiary.R
@@ -25,6 +23,7 @@ import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.ValueFormatter
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
@@ -45,7 +44,7 @@ class StatisticsFragment : Fragment() {
 
         val dbHelper = DBHelper(this.requireContext())
         val userParameterList = getSortedUserParameters(dbHelper)
-        val waterTrackParametersList = getSortedWaterTrackParameters(dbHelper);
+        val waterTrackParametersList = getSortedWaterTrackParameters(dbHelper)
 
         val elements = resources.getStringArray(R.array.statistics_list)
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -95,6 +94,25 @@ class StatisticsFragment : Fragment() {
         parametersChart.xAxis.position = XAxis.XAxisPosition.BOTTOM
 
         parametersChart.invalidate()
+
+        val fab: FloatingActionButton = root.findViewById(R.id.fab)
+        val dark: ImageButton = root.findViewById(R.id.dark)
+        val helpImage: ImageView = root.findViewById(R.id.help_image)
+        fab.setOnClickListener {
+            val visibility = if (dark.visibility == View.GONE) {
+                View.VISIBLE
+            } else {
+                View.GONE
+            }
+            dark.visibility = visibility
+            helpImage.visibility = visibility
+        }
+
+        dark.setOnClickListener {
+            dark.visibility = View.GONE
+            helpImage.visibility = View.GONE
+        }
+
         return root
     }
 

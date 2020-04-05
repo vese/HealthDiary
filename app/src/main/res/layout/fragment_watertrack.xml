@@ -1,48 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-    <!--<ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/whitecircle"
-            android:layout_centerInParent="true"/>
--->
-
-    <!-- <ProgressBar
-             android:id="@+id/waterProgressBar"
-             style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-             android:layout_width="232dp"
-             android:layout_height="244dp"
-             android:layout_marginTop="32dp"
-             android:background="#FFFFFF"
-             android:clickable="false"
-             android:max="100"
-             android:min="0"
-             android:progress="0"
-             app:layout_constraintBottom_toTopOf="@+id/addButton"
-             app:layout_constraintEnd_toEndOf="parent"
-             app:layout_constraintHorizontal_bias="0.497"
-             app:layout_constraintStart_toStartOf="parent"
-             app:layout_constraintTop_toBottomOf="@+id/text_watertrack"
-             app:layout_constraintVertical_bias="0.0" />
- -->
-
-    <!--<TextView
-            android:id="@+id/percentTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            app:layout_constraintBottom_toBottomOf="@+id/waterProgressBar"
-            app:layout_constraintEnd_toEndOf="@+id/waterProgressBar"
-            app:layout_constraintHorizontal_bias="0.502"
-            app:layout_constraintStart_toStartOf="@+id/waterProgressBar"
-            app:layout_constraintTop_toTopOf="@+id/waterProgressBar"
-            app:layout_constraintVertical_bias="0.706" />
--->
 
     <ScrollView
             android:layout_width="match_parent"
@@ -67,7 +27,7 @@
                         android:layout_marginEnd="10dp"
                         android:layout_marginRight="10dp"
                         android:gravity="center_horizontal"
-                        android:text="Контроль количества выпитой жидкости"
+                        android:text="@string/water_control"
                         android:textAlignment="center"
                         android:textSize="28sp"
                         android:textStyle="bold" />
@@ -103,7 +63,7 @@
                         android:layout_centerInParent="true"
                         android:layout_gravity="center"
                         android:gravity="center"
-                        android:text="0%"
+                        android:text="@string/zero_percent"
                         android:textColor="@color/colorPrimaryDark"
                         android:textSize="24sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -124,7 +84,7 @@
                         android:layout_height="wrap_content"
 
                         android:gravity="center"
-                        android:text="ml"
+                        android:text="@string/ml"
                         android:textColor="@color/colorPrimaryDark"
                         android:textSize="24sp" />
             </LinearLayout>
@@ -148,35 +108,35 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:checked="true"
-                            android:text="Вода"
+                            android:text="@string/water"
                             android:textSize="18sp" />
 
                     <RadioButton
                             android:id="@+id/juiceRadioButton"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Сок"
+                            android:text="@string/juice"
                             android:textSize="18sp" />
 
                     <RadioButton
                             android:id="@+id/milkRadioButton"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Молоко"
+                            android:text="@string/milk"
                             android:textSize="18sp" />
 
                     <RadioButton
                             android:id="@+id/coffeeRadioButton"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Кофе"
+                            android:text="@string/cofee"
                             android:textSize="18sp" />
 
                     <RadioButton
                             android:id="@+id/teaRadioButton"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Чай"
+                            android:text="@string/tea"
                             android:textSize="18sp" />
                 </RadioGroup>
             </LinearLayout>
@@ -184,7 +144,7 @@
             <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="right"
+                    android:gravity="end"
                     android:orientation="horizontal">
 
                 <TextView
@@ -192,7 +152,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
 
-                        android:text="Количество:"
+                        android:text="@string/count"
                         android:textSize="18sp"
                         android:textStyle="normal" />
 
@@ -218,10 +178,46 @@
                         android:id="@+id/addButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Добавить" />
+                        android:text="@string/add" />
             </LinearLayout>
 
         </LinearLayout>
     </ScrollView>
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/fab_margin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@android:drawable/ic_dialog_email" />
+
+    <ImageButton
+            android:id="@+id/dark"
+            android:layout_width="1000dp"
+            android:layout_height="1000dp"
+            android:alpha="0.6"
+            android:scaleType="fitXY"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/dark" />
+
+    <ImageView
+            android:id="@+id/help_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/water_help" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
