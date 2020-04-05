@@ -1,61 +1,74 @@
 <resources>
-    <string name="app_name">Health Diary</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Health Diary</string>
-    <string name="nav_header_subtitle"></string>
-    <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
+    <string name="app_name">Дневник здоровья</string>
+    <string name="nav_header_title">Дневник здоровья</string>
 
-    <string name="menu_parameters">Parameters monitoring</string>
-    <string name="menu_watertrack">Water Track</string>
-    <string name="menu_statistics">Statistics</string>
-    <string name="menu_planning">Planning</string>
+    <string name="menu_parameters">Учет показателей</string>
+    <string name="menu_watertrack">Контроль жидкости</string>
+    <string name="menu_statistics">Статистика</string>
+    <string name="menu_planning">Планирование</string>
     <string name="menu_tools">Tools</string>
-    <string name="menu_recommendations">Recommendations</string>
-    <string name="menu_main">Main</string>
-    <string name="menu_exit">Exit</string>
-    <string name="recommendation">recommendation</string>
+    <string name="menu_recommendations">Рекомендации</string>
+    <string name="menu_main">Главный экран</string>
+    <string name="menu_exit">Выход</string>
+    <string name="recommendation">Рекомендация</string>
     <string name="title">Title</string>
-    <string name="menu_medicaments">Medicaments</string>
-    <string name="medicament_name">Name</string>
-    <string name="title_dosage">Dosage</string>
-    <string name="manufacturer_title">Manufacturer</string>
-    <string name="title_price">Price</string>
-    <string name="input_your_sex">Input your sex</string>
-    <string name="input_your_birth_date">Input your birth date</string>
-    <string name="input">Input</string>
-    <string name="choose_your_birth_date">Choose your birth date.</string>
-    <string name="input_your_weight">Input your weight</string>
-    <string name="input_your_height">Input your height</string>
-    <string name="input_your_parameters_and_get_a_hint">Input your parameters and get a hint.</string>
-    <string name="save">Save</string>
-    <string name="date">Date</string>
-    <string name="weight">Weight</string>
-    <string name="height">Height</string>
-    <string name="planned_event">Planned event</string>
-    <string name="new_plan_added">New plan was added!</string>
+    <string name="menu_medicaments">Медикаменты</string>
+    <string name="medicament_name">Наименование</string>
+    <string name="title_dosage">Дозировка</string>
+    <string name="manufacturer_title">Производитель</string>
+    <string name="title_price">Цена</string>
+    <string name="input_your_sex">Ваш пол</string>
+    <string name="input_your_birth_date">Ваша дата рождения</string>
+    <string name="input">Ввод</string>
+    <string name="choose_your_birth_date">Выберите Вашу дату рождения</string>
+    <string name="input_your_weight">Ваш вес</string>
+    <string name="input_your_height">Ваш рост</string>
+    <string name="input_your_parameters_and_get_a_hint">Введите Ваши параметры и получите подсказку.</string>
+    <string name="save">Сохранить</string>
+    <string name="date">Дата</string>
+    <string name="weight">Вес</string>
+    <string name="height">Рост</string>
+    <string name="planned_event">Планируемое событие</string>
+    <string name="new_plan_added">Новое событие было добавлено!</string>
     <string name="medicine_taking">Прием лекарства</string>
     <string name="date_format">dd.MM.yyyy</string>
-    <string name="title_date_format">MMMM yyyy</string>
-    <string name="fill_empty_imputs">Fill empty inputs!</string>
+    <string name="title_date_format">MMM yyyy</string>
+    <string name="fill_empty_imputs">Заполните пустые поля!</string>
     <string name="birth_date_key">birthDate</string>
     <string name="sex_key">sex</string>
     <string name="mass_index_key">massIndex</string>
-    <string name="values_saved">New values were saved!</string>
+    <string name="values_saved">Новые значения были сохранены!</string>
     <string name="ru">ru</string>
-    <string name="mass_index_hint1">The deficit of body weight</string>
-    <string name="mass_index_hint2">Normal body weight</string>
-    <string name="mass_index_hint3">Excess body weight</string>
-    <string name="mass_index_hint4">1st degree obesity</string>
-    <string name="mass_index_hint5">2d degree obesity</string>
-    <string name="mass_index_hint6">3d degree obesity</string>
+    <string name="mass_index_deficit_hint">Дефицит массы тела</string>
+    <string name="mass_index_normal_hint">Нормальная масса тела</string>
+    <string name="mass_index_excess_hint">Лишний вес</string>
+    <string name="mass_index_first_degree_hint">Первая степень ожирения</string>
+    <string name="mass_index_second_degree_hint">Вторая степень ожирения</string>
+    <string name="mass_index_third_degree_hint">Третья степень ожирения</string>
     <string name="dot">.</string>
-    <string name="your_age">Your age is %d</string>
+    <string name="your_age">Ваш возраст %d</string>
+    <string name="recommendation_text">Текст рекомендации</string>
+    <string name="water_control">Контроль количества выпитой жидкости</string>
+    <string name="zero_percent">0%</string>
+    <string name="ml">ml</string>
+    <string name="water">Вода</string>
+    <string name="juice">Сок</string>
+    <string name="milk">Молоко</string>
+    <string name="cofee">Кофе</string>
+    <string name="tea">Чай</string>
+    <string name="count">Количество:</string>
+    <string name="add">Добавить</string>
+    <string name="male">Мужской</string>
+    <string name="not_enough_data">Недостаточно данных!</string>
+    <string name="progress_percent">%d %%</string>
+    <string name="water_current">%d / %d мл</string>
+    <string name="no_events">Нет событий</string>
+    <string name="adding">Добавление</string>
+    <string name="month">Month</string>
 
     <string-array name="sex_list">
-        <item>Female</item>
-        <item>Male</item>
+        <item>Женский</item>
+        <item>Мужской</item>
     </string-array>
 
     <string-array name="plan_list">
@@ -67,5 +80,7 @@
     <string-array name="statistics_list">
         <item>Рост</item>
         <item>Вес</item>
+        <item>ИМТ</item>
+        <item>Употребление воды</item>
     </string-array>
 </resources>

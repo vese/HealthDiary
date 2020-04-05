@@ -6,28 +6,28 @@
     app:startDestination="@id/nav_main">
 
     <fragment
-        android:id="@+id/nav_parameters"
-        android:name="com.example.healthdiary.ui.parameters.ParametersFragment"
-        android:label="@string/menu_parameters"
-        tools:layout="@layout/fragment_parameters" />
+            android:id="@+id/nav_parameters"
+            android:name="com.example.healthdiary.ui.parameters.ParametersFragment"
+            android:label="@string/menu_parameters"
+            tools:layout="@layout/fragment_parameters" />
 
     <fragment
-        android:id="@+id/nav_medicaments"
-        android:name="com.example.healthdiary.ui.medicaments.MedicamentsListFragment"
-        android:label="@string/menu_medicaments"
-        tools:layout="@layout/fragment_medicaments" />
+            android:id="@+id/nav_medicaments"
+            android:name="com.example.healthdiary.ui.medicaments.MedicamentsFragment"
+            android:label="@string/menu_medicaments"
+            tools:layout="@layout/fragment_medicaments" />
 
     <fragment
-        android:id="@+id/nav_watertrack"
-        android:name="com.example.healthdiary.ui.watertrack.WaterTrackFragment"
-        android:label="@string/menu_watertrack"
-        tools:layout="@layout/fragment_watertrack" />
+            android:id="@+id/nav_watertrack"
+            android:name="com.example.healthdiary.ui.watertrack.WaterTrackFragment"
+            android:label="@string/menu_watertrack"
+            tools:layout="@layout/fragment_watertrack" />
 
     <fragment
-        android:id="@+id/nav_planning"
-        android:name="com.example.healthdiary.ui.planning.PlanningFragment"
-        android:label="@string/menu_planning"
-        tools:layout="@layout/fragment_planning" />
+            android:id="@+id/nav_planning"
+            android:name="com.example.healthdiary.ui.planning.PlanningFragment"
+            android:label="@string/menu_planning"
+            tools:layout="@layout/fragment_planning" />
 
     <fragment
             android:id="@+id/nav_statistics"
@@ -42,14 +42,14 @@
         tools:layout="@layout/fragment_main" />
 
     <fragment
-        android:id="@+id/nav_exit"
-        android:name="com.example.healthdiary.ui.exit.ExitFragment"
-        android:label="@string/menu_exit"
-        tools:layout="@layout/fragment_exit" />
+            android:id="@+id/nav_exit"
+            android:name="com.example.healthdiary.ui.exit.ExitFragment"
+            android:label="@string/menu_exit"
+            tools:layout="@layout/fragment_exit" />
 
     <fragment
-        android:id="@+id/nav_recommendations"
-        android:name="com.example.healthdiary.ui.recommendations.RecommendationsListFragment"
-        android:label="@string/menu_recommendations"
-        tools:layout="@layout/fragment_recommendations" />
+            android:id="@+id/nav_recommendations"
+            android:name="com.example.healthdiary.ui.recommendations.RecommendationsFragment"
+            android:label="@string/menu_recommendations"
+            tools:layout="@layout/fragment_recommendations" />
 </navigation>
