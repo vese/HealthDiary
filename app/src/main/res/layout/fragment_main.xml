@@ -12,12 +12,6 @@
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"></LinearLayout>
-
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
                 android:orientation="horizontal">
 
             <TextView
@@ -26,8 +20,8 @@
                     android:layout_height="wrap_content"
                     android:text="Дневник здоровья"
                     android:textSize="30sp" />
-
         </LinearLayout>
+
     </LinearLayout>
 
     <TextView

@@ -2,7 +2,7 @@
     <string name="app_name">Дневник здоровья</string>
     <string name="nav_header_title">Дневник здоровья</string>
 
-    <string name="menu_parameters">Учет показателей</string>
+    <string name="menu_parameters">Учёт показателей</string>
     <string name="menu_watertrack">Контроль жидкости</string>
     <string name="menu_statistics">Статистика</string>
     <string name="menu_planning">Планирование</string>
@@ -30,7 +30,7 @@
     <string name="height">Рост</string>
     <string name="planned_event">Планируемое событие</string>
     <string name="new_plan_added">Новое событие было добавлено!</string>
-    <string name="medicine_taking">Прием лекарства</string>
+    <string name="medicine_taking">Приём лекарства</string>
     <string name="date_format">dd.MM.yyyy</string>
     <string name="title_date_format">MMM yyyy</string>
     <string name="fill_empty_imputs">Заполните пустые поля!</string>
@@ -54,7 +54,7 @@
     <string name="water">Вода</string>
     <string name="juice">Сок</string>
     <string name="milk">Молоко</string>
-    <string name="cofee">Кофе</string>
+    <string name="coffee">Кофе</string>
     <string name="tea">Чай</string>
     <string name="count">Количество:</string>
     <string name="add">Добавить</string>
@@ -64,7 +64,7 @@
     <string name="water_current">%d / %d мл</string>
     <string name="no_events">Нет событий</string>
     <string name="adding">Добавление</string>
-    <string name="month">Month</string>
+    <string name="month">Месяц</string>
 
     <string-array name="sex_list">
         <item>Женский</item>
