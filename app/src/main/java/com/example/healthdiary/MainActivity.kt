@@ -36,6 +36,7 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
+                R.id.nav_main,
                 R.id.nav_parameters,
                 R.id.nav_medicaments,
                 R.id.nav_recommendations,
@@ -43,10 +44,10 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_watertrack,
                 R.id.nav_planning,
                 R.id.nav_tools,
-                R.id.nav_share,
                 R.id.nav_exit
             ), drawerLayout
         )
+
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
@@ -56,6 +57,7 @@ class MainActivity : AppCompatActivity() {
         menuInflater.inflate(R.menu.main, menu)
         return true
     }
+
 
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment)
