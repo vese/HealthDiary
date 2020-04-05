@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import com.example.healthdiary.R
 import com.example.healthdiary.db.DBHelper
 import com.example.healthdiary.db.WaterTrackParameters
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class WaterTrackFragment : Fragment() {
 
@@ -27,33 +28,52 @@ class WaterTrackFragment : Fragment() {
         }
         val userWeight = dbHandler.getLastUserParameters()?.weight
         val userSex = dbHandler.getUserParameter("sex")
-        var dailyRate = calculateDailyRate(userWeight, userSex, container!!.context)
-        updateScreen(dailyRate, currentIntake, root);
+        val dailyRate = calculateDailyRate(userWeight, userSex, container.context)
+        updateScreen(dailyRate, currentIntake, root)
 
         val radioGroup: RadioGroup = root.findViewById(R.id.radioGroup)
         val inputAmountText: EditText = root.findViewById(R.id.inputAmountText)
         val addButton: Button = root.findViewById(R.id.addButton)
         addButton.setOnClickListener {
             val addAmountStr = inputAmountText.text.toString()
-            if (addAmountStr.isNullOrEmpty())
+            if (addAmountStr.isEmpty())
             {
-                Toast.makeText(container!!.context, "Введите количество!", Toast.LENGTH_LONG).show()
+                Toast.makeText(container.context, "Введите количество!", Toast.LENGTH_LONG).show()
             }
             else
             {
                 inputAmountText.setText("")
-                val mult = when {
-                    radioGroup.checkedRadioButtonId == R.id.waterRadioButton -> 1f
-                    radioGroup.checkedRadioButtonId == R.id.juiceRadioButton -> 0.8f
-                    radioGroup.checkedRadioButtonId == R.id.milkRadioButton -> 0.8f
-                    radioGroup.checkedRadioButtonId == R.id.coffeeRadioButton -> 0.1f
-                    radioGroup.checkedRadioButtonId == R.id.teaRadioButton -> 0.1f
+                val mult = when (radioGroup.checkedRadioButtonId) {
+                    R.id.waterRadioButton -> 1f
+                    R.id.juiceRadioButton -> 0.8f
+                    R.id.milkRadioButton -> 0.8f
+                    R.id.coffeeRadioButton -> 0.1f
+                    R.id.teaRadioButton -> 0.1f
                     else -> 0f
                 }
                 currentIntake += (addAmountStr.toInt() * mult).toInt()
-                updateScreen(dailyRate, currentIntake, root);
+                updateScreen(dailyRate, currentIntake, root)
                 dbHandler.updateWaterTrackParameters(WaterTrackParameters(currentIntake))
             }
+        }
+
+
+        val fab: FloatingActionButton = root.findViewById(R.id.fab)
+        val dark: ImageButton = root.findViewById(R.id.dark)
+        val helpImage: ImageView = root.findViewById(R.id.help_image)
+        fab.setOnClickListener {
+            val visibility = if (dark.visibility == View.GONE) {
+                View.VISIBLE
+            } else {
+                View.GONE
+            }
+            dark.visibility = visibility
+            helpImage.visibility = visibility
+        }
+
+        dark.setOnClickListener {
+            dark.visibility = View.GONE
+            helpImage.visibility = View.GONE
         }
 
         return root
@@ -65,21 +85,21 @@ class WaterTrackFragment : Fragment() {
         val percentTextView: TextView = root.findViewById(R.id.percentTextView)
         val normTextView: TextView = root.findViewById(R.id.normTextView)
 
-        var progressPercent = (currentIntake.toFloat() / dailyRate * 100).toInt();
-        waterProgressBar.setProgress(progressPercent);
-        percentTextView.text = "${progressPercent.toString()} %";
-        normTextView.text = "${currentIntake.toString()} / ${dailyRate.toString()} мл"
+        val progressPercent = (currentIntake.toFloat() / dailyRate * 100).toInt()
+        waterProgressBar.progress = progressPercent
+        percentTextView.text = getString(R.string.progress_percent, progressPercent)
+        normTextView.text = getString(R.string.water_current, currentIntake, dailyRate)
     }
 
     private fun calculateDailyRate(userWeight: Float?, userSex: String?, context: Context): Int {
-        if (userWeight == null || userSex == null) {
-            Toast.makeText(context, "Недостаточно данных!", Toast.LENGTH_LONG).show()
-            return 2000;
+        return if (userWeight == null || userSex == null) {
+            Toast.makeText(context, getString(R.string.not_enough_data), Toast.LENGTH_LONG).show()
+            2000
         } else {
-            if (userSex == "Male") {
-                return (35f * userWeight).toInt();
+            if (userSex == getString(R.string.male)) {
+                (35f * userWeight).toInt()
             } else {
-                return (31f * userWeight).toInt();
+                (31f * userWeight).toInt()
             }
         }
     }

@@ -16,6 +16,7 @@ import com.example.healthdiary.db.Plan
 import com.example.healthdiary.model.medicaments.Medicament
 import com.github.sundeepk.compactcalendarview.CompactCalendarView
 import com.github.sundeepk.compactcalendarview.domain.Event
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -112,6 +113,32 @@ class PlanningFragment : Fragment() {
             compactCalendar.addEvent(Event(Color.GREEN, timestamp))
             Toast.makeText(container.context, getString(R.string.new_plan_added), Toast.LENGTH_LONG)
                 .show()
+        }
+
+        val fab: FloatingActionButton = root.findViewById(R.id.fab)
+        val dark: ImageButton = root.findViewById(R.id.dark)
+        val helpImage: ImageView = root.findViewById(R.id.help_image)
+        val helpAddingImage: ImageView = root.findViewById(R.id.help_adding_image)
+        fab.setOnClickListener {
+            val visibility = if (dark.visibility == View.GONE) {
+                View.VISIBLE
+            } else {
+                View.GONE
+            }
+            dark.visibility = visibility
+            if (showSwitch.isChecked) {
+                helpAddingImage.visibility = visibility
+                helpImage.visibility = View.GONE
+            } else {
+                helpAddingImage.visibility = View.GONE
+                helpImage.visibility = visibility
+            }
+        }
+
+        dark.setOnClickListener {
+            dark.visibility = View.GONE
+            helpImage.visibility = View.GONE
+            helpAddingImage.visibility = View.GONE
         }
 
         return root

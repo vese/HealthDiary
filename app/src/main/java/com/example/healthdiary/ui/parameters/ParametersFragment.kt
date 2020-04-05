@@ -13,6 +13,7 @@ import com.example.healthdiary.db.DBHelper
 import com.example.healthdiary.db.UserParameter
 import com.example.healthdiary.db.UserParameters
 import com.example.healthdiary.util.*
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.math.pow
@@ -147,6 +148,24 @@ class ParametersFragment : Fragment() {
                     Toast.LENGTH_LONG
                 ).show()
             }
+        }
+
+        val fab: FloatingActionButton = root.findViewById(R.id.fab)
+        val dark: ImageButton = root.findViewById(R.id.dark)
+        val helpImage: ImageView = root.findViewById(R.id.help_image)
+        fab.setOnClickListener {
+            val visibility = if (dark.visibility == View.GONE) {
+                View.VISIBLE
+            } else {
+                View.GONE
+            }
+            dark.visibility = visibility
+            helpImage.visibility = visibility
+        }
+
+        dark.setOnClickListener {
+            dark.visibility = View.GONE
+            helpImage.visibility = View.GONE
         }
 
         return root
