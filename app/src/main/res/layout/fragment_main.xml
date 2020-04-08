@@ -16,10 +16,10 @@
                 android:layout_weight="1"
                 android:orientation="horizontal"
                 android:layout_marginTop="64dp"
-                android:layout_marginStart="64dp"
-                android:layout_marginLeft="64dp"
-                android:layout_marginEnd="64dp"
-                android:layout_marginRight="64dp">
+                android:layout_marginStart="32dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginRight="32dp">
 
             <LinearLayout
                     android:layout_width="match_parent"
@@ -73,10 +73,10 @@
                 android:layout_weight="1"
                 android:orientation="horizontal"
                 android:layout_marginTop="32dp"
-                android:layout_marginStart="64dp"
-                android:layout_marginLeft="64dp"
-                android:layout_marginEnd="64dp"
-                android:layout_marginRight="64dp">
+                android:layout_marginStart="32dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginRight="32dp">
 
             <LinearLayout
                     android:layout_width="match_parent"
@@ -131,10 +131,10 @@
                 android:orientation="horizontal"
                 android:layout_marginTop="32dp"
                 android:layout_marginBottom="64dp"
-                android:layout_marginStart="64dp"
-                android:layout_marginLeft="64dp"
-                android:layout_marginEnd="64dp"
-                android:layout_marginRight="64dp">
+                android:layout_marginStart="32dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginRight="32dp">
 
             <LinearLayout
                     android:layout_width="match_parent"
