@@ -217,7 +217,6 @@ class PlanningFragment : Fragment() {
             typeSpinner.visibility = View.VISIBLE
             setMedVisibility(root, typeSpinner.selectedItem.toString())
             addButton.visibility = View.VISIBLE
-
         } else {
             if (plansCount == 0) {
                 plansText.visibility = View.VISIBLE
