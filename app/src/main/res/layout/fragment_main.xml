@@ -29,7 +29,7 @@
                     android:gravity="center">
 
                 <ImageButton
-                        android:id="@+id/imageButton1"
+                        android:id="@+id/imageButtonParams"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -51,7 +51,7 @@
                     android:gravity="center">
 
                 <ImageButton
-                        android:id="@+id/imageButton2"
+                        android:id="@+id/imageButtonMeds"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -86,7 +86,7 @@
                     android:gravity="center">
 
                 <ImageButton
-                        android:id="@+id/imageButton3"
+                        android:id="@+id/imageButtonStats"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -108,7 +108,7 @@
                     android:gravity="center">
 
                 <ImageButton
-                        android:id="@+id/imageButton4"
+                        android:id="@+id/imageButtonWater"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -144,7 +144,7 @@
                     android:gravity="center">
 
                 <ImageButton
-                        android:id="@+id/imageButton5"
+                        android:id="@+id/imageButtonPlans"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -166,7 +166,7 @@
                     android:gravity="center">
 
                 <ImageButton
-                        android:id="@+id/imageButton6"
+                        android:id="@+id/imageButtonRec"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
