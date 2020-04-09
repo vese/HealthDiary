@@ -43,10 +43,12 @@ class PlanningFragment : Fragment() {
         val monthText: TextView = root.findViewById(R.id.month_text)
         val compactCalendar: CompactCalendarView = root.findViewById(R.id.compactcalendar_view)
 
+        val meds = dbHandler.getMedicaments().listOfField(Medicament::name)
+
         medSpinner.adapter = ArrayAdapter(
             container.context,
             android.R.layout.simple_spinner_dropdown_item,
-            dbHandler.getMedicaments().listOfField(Medicament::name)
+            meds
         )
 
         compactCalendar.setUseThreeLetterAbbreviation(true)
@@ -68,10 +70,10 @@ class PlanningFragment : Fragment() {
             compactCalendar.addEvent(Event(Color.GREEN, timestamp))
         }
 
-        setVisibility(root, showSwitch.isChecked, dayPlansCount)
+        setVisibility(root, showSwitch.isChecked, dayPlansCount, meds.count())
 
         showSwitch.setOnCheckedChangeListener { _, checked ->
-            setVisibility(root, checked, dayPlansCount)
+            setVisibility(root, checked, dayPlansCount, meds.count())
         }
 
         typeSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -83,7 +85,7 @@ class PlanningFragment : Fragment() {
                 position: Int,
                 id: Long
             ) {
-                setMedVisibility(root, typeSpinner.selectedItem.toString())
+                setMedVisibility(root, typeSpinner.selectedItem.toString(), meds.count())
             }
         }
 
@@ -91,7 +93,7 @@ class PlanningFragment : Fragment() {
             override fun onDayClick(dateClicked: Date) {
                 chosenDate = dateFormat.format(dateClicked)
                 dayPlansCount = loadPlans(root, container.context, dbHandler, chosenDate)
-                setVisibility(root, showSwitch.isChecked, dayPlansCount)
+                setVisibility(root, showSwitch.isChecked, dayPlansCount, meds.count())
             }
 
             override fun onMonthScroll(firstDayOfNewMonth: Date) {
@@ -196,16 +198,16 @@ class PlanningFragment : Fragment() {
         return cell
     }
 
-    private fun setMedVisibility(root: View, selectedType: String) {
+    private fun setMedVisibility(root: View, selectedType: String, medsCount: Int) {
         val medSpinner: Spinner = root.findViewById(R.id.spinner_medicament)
-        if (selectedType == getString(R.string.medicine_taking)) {
+        if (selectedType == getString(R.string.medicine_taking) && medsCount > 0) {
             medSpinner.visibility = View.VISIBLE
         } else {
             medSpinner.visibility = View.GONE
         }
     }
 
-    private fun setVisibility(root: View, checked: Boolean, plansCount: Int) {
+    private fun setVisibility(root: View, checked: Boolean, plansCount: Int, medsCount: Int) {
         val plansText: TextView = root.findViewById(R.id.plans_text)
         val typeSpinner: Spinner = root.findViewById(R.id.spinner_type)
         val medSpinner: Spinner = root.findViewById(R.id.spinner_medicament)
@@ -215,7 +217,7 @@ class PlanningFragment : Fragment() {
             plansText.visibility = View.GONE
             table.visibility = View.GONE
             typeSpinner.visibility = View.VISIBLE
-            setMedVisibility(root, typeSpinner.selectedItem.toString())
+            setMedVisibility(root, typeSpinner.selectedItem.toString(), medsCount)
             addButton.visibility = View.VISIBLE
         } else {
             if (plansCount == 0) {
